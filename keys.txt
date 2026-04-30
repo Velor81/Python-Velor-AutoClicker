@@ -1,0 +1,8 @@
+right-click
+Left-click
+right-click
+Left-click
+Left-click
+right-click
+Left-hold: 1.0
+right-hold: 1.0
