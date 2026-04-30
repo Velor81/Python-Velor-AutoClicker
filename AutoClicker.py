@@ -190,8 +190,7 @@ class AutoClicker():
                 print(item_splited[0])
                 
                 if item_splited[0] == 'Key press':
-                    pyautogui.press(item_splited[1])
-
+                    pyautogui.press(item_splited[1].strip())
                 elif item_splited[0] == 'Key combo':
                     keys = item_splited[1].split('+')
                     # Press down multiple keys
