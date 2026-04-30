@@ -250,9 +250,6 @@ class Ui_MainWindow(object):
         self.start_stop_bt = QPushButton(self.verticalFrame_2)
         self.start_stop_bt.setObjectName(u"start_stop_bt")
         self.start_stop_bt.setMinimumSize(QSize(0, 30))
-        icon = QIcon()
-        icon.addFile(u"icons/play-icon Red.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.start_stop_bt.setIcon(icon)
 
         self.verticalLayout_4.addWidget(self.start_stop_bt)
 
@@ -278,9 +275,6 @@ class Ui_MainWindow(object):
         self.remove_key_bt = QPushButton(self.move_up_down_group)
         self.remove_key_bt.setObjectName(u"remove_key_bt")
         self.remove_key_bt.setMaximumSize(QSize(25, 16777215))
-        icon1 = QIcon()
-        icon1.addFile(u"icons/x-icon red.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.remove_key_bt.setIcon(icon1)
 
         self.verticalLayout.addWidget(self.remove_key_bt)
 
@@ -289,9 +283,6 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.move_up_bt.sizePolicy().hasHeightForWidth())
         self.move_up_bt.setSizePolicy(sizePolicy3)
         self.move_up_bt.setMaximumSize(QSize(25, 16777215))
-        icon2 = QIcon()
-        icon2.addFile(u"icons/arrow-up-icon Blue.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.move_up_bt.setIcon(icon2)
 
         self.verticalLayout.addWidget(self.move_up_bt)
 
@@ -300,9 +291,6 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.move_down_bt.sizePolicy().hasHeightForWidth())
         self.move_down_bt.setSizePolicy(sizePolicy3)
         self.move_down_bt.setMaximumSize(QSize(25, 16777215))
-        icon3 = QIcon()
-        icon3.addFile(u"icons/arrow-down-icon Blue.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.move_down_bt.setIcon(icon3)
 
         self.verticalLayout.addWidget(self.move_down_bt)
 

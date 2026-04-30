@@ -1,8 +1,14 @@
-right-click
+Key press: 1
+Key press: 2
+Key press: 3
+delay: 1.0
 Left-click
-right-click
-Left-click
-Left-click
-right-click
 Left-hold: 1.0
-right-hold: 1.0
+Left-hold: 2.0
+right-hold: 2.5
+Key press: h
+Key press: s
+Key press: w
+delay: 1.6
+Key press: 1
+delay: 2

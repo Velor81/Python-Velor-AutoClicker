@@ -5,7 +5,7 @@ import os
 import threading
 import pyautogui
 from pynput import keyboard
-
+import sys
 
 class AutoClicker():
     def __init__(self, list_widget, line_add_edit, add_delay_edit, toggle_start_stop_edit, delay_edit, 
@@ -79,7 +79,7 @@ class AutoClicker():
             action = "Left-click"
         else:
             action = "right-click"
-        icon = QIcon("icons/mouse.png")
+        icon = QIcon(self.resource_path("icons/mouse.png"))
         self.add_list_item(icon, action)
         self.line_add_edit.clear()  
         self.save_keys_to_file()  
@@ -91,7 +91,7 @@ class AutoClicker():
         else:
             delay = self.add_left_hold_lineEdit.text()
             action = f"right-hold: {delay}"
-        icon = QIcon("icons/mouse.png")
+        icon = QIcon(self.resource_path("icons/mouse.png"))
         self.add_list_item(icon, action)
         self.line_add_edit.clear()
         self.save_keys_to_file()  
@@ -100,7 +100,7 @@ class AutoClicker():
         delay_amount = self.add_delay_edit.text().strip().lower()
         if delay_amount:
             action = f"delay: {delay_amount}"
-            icon = QIcon("icons/delay.png")
+            icon = QIcon(self.resource_path("icons/delay.png"))
             self.add_list_item(icon, action)
             self.line_add_edit.clear() 
             self.save_keys_to_file() 
@@ -109,7 +109,7 @@ class AutoClicker():
         key = self.line_add_edit.text().strip().lower()
         if key in self.valid_keys:
             action = f"Key press: {key}"
-            icon = QIcon("icons/key.png")
+            icon = QIcon(self.resource_path("icons/key.png"))
             self.add_list_item(icon, action)
             self.line_add_edit.clear() 
             self.save_keys_to_file() 
@@ -155,7 +155,7 @@ class AutoClicker():
         help_text = (
         "Developer: Alaa Hamdy (Velor)\n"
         "Github: https://github.com/Velor81/Python-Velor-AutoClicker\n"
-        "Licensed under the MIT License"
+        "Licensed under the MIT License\n"
         "------------------------------\n"
             "Available Keys for Auto Clicker:\n"
             "- Alphabets (e.g., 'a', 'b', 'c')\n"
@@ -235,18 +235,25 @@ class AutoClicker():
                     key = key.strip()
                     if key:
                         if 'Left-click' in key or "Right-click" in key or 'Left-hold' in key or 'Right-hold':
-                            icon = QIcon("icons/mouse.png")
+                            icon = QIcon(self.resource_path("icons/mouse.png"))
                         elif 'Key press' in key:
-                            icon = QIcon('icons/key.png')
+                            icon = QIcon(self.resource_path('icons/key.png'))
                         elif 'delay' in key:
-                            icon = QIcon('icons/delay.png')
+                            icon = QIcon(self.resource_path('icons/delay.png'))
                         elif 'Mouse hold at' in key:
-                            icon = QIcon('icons/mouse_hold.png')
+                            icon = QIcon(self.resource_path('icons/mouse_hold.png'))
                         elif 'Mouse release at' in key:
-                            icon = QIcon('icons/mouse_release.png')
+                            icon = QIcon(self.resource_path('icons/mouse_release.png'))
                         item = QListWidgetItem(icon, key)
                         # self.list_widget.addItem(key.strip())
                         self.list_widget.addItem(item)
+    def resource_path(self, relative_path): #used for (auto-py-to-exe) to get the icons path when convert to one exe
+        try:
+            # PyInstaller creates a temp folder and stores path in _MEIPASS
+            base_path = sys._MEIPASS
+        except Exception:
+            base_path = os.path.abspath(".")
+        return os.path.join(base_path, relative_path)
 
     def on_key_press(self, key):
         try:

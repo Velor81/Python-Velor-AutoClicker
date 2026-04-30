@@ -9,7 +9,8 @@ from PySide6.QtCore import  Qt, QPoint
 from PySide6.QtGui import QAction,QDoubleValidator
 from ui_mainwindow import Ui_MainWindow
 from AutoClicker import AutoClicker
-
+from PySide6.QtGui import QIcon
+import sys, os
 class MainWidget(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -22,10 +23,11 @@ class MainWidget(QMainWindow):
         self.ui.add_delay_item_edit.setValidator(float_validator)
         self.ui.add_left_hold_lineEdit.setValidator(float_validator)
         self.ui.add_right_hold_lineEdit.setValidator(float_validator)
-
+        self.add_bt_icons()
         self.auto_clicker = AutoClicker(self.ui.keys_listWidget, self.ui.add_key_edit, self.ui.add_delay_item_edit,
                                         self.ui.toggle_start_stop_edit,self.ui.delay_edit, self.ui.add_left_hold_lineEdit,
                                         self.ui.add_right_hold_lineEdit, self) #self here only for QMessage
+
         self.add_context_menu(self.ui.keys_listWidget, ['copy', 'clear', 'remove'])
 
         self.ui.add_key_bt.clicked.connect(lambda: self.auto_clicker.add_key())
@@ -45,6 +47,23 @@ class MainWidget(QMainWindow):
         self.ui.help_bt.clicked.connect(lambda: self.auto_clicker.show_help())
         self.ui.keys_listWidget.itemChanged.connect(lambda: self.auto_clicker.save_keys_to_file())
         
+    def add_bt_icons(self):
+        def resource_path(relative_path): #used for (auto-py-to-exe) to get the icons path when convert to one exe
+            try:
+                # PyInstaller creates a temp folder and stores path in _MEIPASS
+                base_path = sys._MEIPASS
+            except Exception:
+                base_path = os.path.abspath(".")
+            return os.path.join(base_path, relative_path)
+        icon = QIcon(resource_path("icons/arrow-up-icon Blue.png"))
+        self.ui.move_up_bt.setIcon(icon)
+        icon = QIcon(resource_path("icons/arrow-down-icon Blue.png"))
+        self.ui.move_down_bt.setIcon(icon)
+        icon = QIcon(resource_path("icons/play-icon Red.png"))
+        self.ui.start_stop_bt.setIcon(icon)
+        icon = QIcon(resource_path("icons/x-icon red.png"))
+        self.ui.remove_key_bt.setIcon(icon)
+    
     def add_context_menu(self, listwidget: QListWidget, options: list):
         def show_context_menu(pos: QPoint):
             context_menu = QMenu(listwidget)
