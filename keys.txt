@@ -1,2 +1,0 @@
-Left-hold: 5.0
-delay: 5.0
