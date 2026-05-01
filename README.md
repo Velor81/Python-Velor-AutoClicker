@@ -12,3 +12,4 @@ Smart Delays: Add custom wait times between each specific action, not just a glo
 Fully Editable List: Reorder actions (Move Up/Down) or delete specific steps to fine-tune your macro.
 Toggle Keys: Set your own custom Hotkey (like F8) to start/stop the entire sequence instantly.
 "# wftw" 
+"# wftw" 

@@ -9,7 +9,7 @@ import sys
 
 class AutoClicker():
     def __init__(self, list_widget, line_add_edit, add_delay_edit, toggle_start_stop_edit, delay_edit, 
-                 left_hold_lineEdit,  right_hold_lineEdit, main_self):
+                 left_hold_lineEdit,  right_hold_lineEdit, status_running_or_idle_label ,main_self):
         self.toggle_start_stop_edit = toggle_start_stop_edit
         self.list_widget = list_widget
         self.line_add_edit = line_add_edit
@@ -17,6 +17,7 @@ class AutoClicker():
         self.delay_edit = delay_edit
         self.add_left_hold_lineEdit = left_hold_lineEdit
         self.add_right_hold_lineEdit = right_hold_lineEdit
+        self.status_running_or_idle_label  = status_running_or_idle_label
         self.main_self = main_self # for Qmessage
         pyautogui.PAUSE = 0.0 #delay between key presses (default is 0.1, 0=no delay)
         self.click_delay = 0.5
@@ -174,11 +175,13 @@ class AutoClicker():
     def toggle_autoclicker(self):
         if self.autoclicker_is_running:
             self.autoclicker_is_running = False
+            self.status_running_or_idle_label.setText("Status: Idle")
             print("Automation stopped")
         else:
             self.autoclicker_is_running = True
             click_thread = threading.Thread(target=self.start_autoclicker)
             click_thread.start()
+            self.status_running_or_idle_label.setText("Status: Running")
             print("Automation started")
     def start_autoclicker(self):
         while self.autoclicker_is_running:
@@ -209,7 +212,7 @@ class AutoClicker():
                     else:
                         m_hold_delay = self.add_right_hold_lineEdit.text()
                     pyautogui.mouseDown(button='left' if 'Left-hold' in item_splited[0] else 'right')
-                    time.sleep(int(m_hold_delay.strip()))
+                    time.sleep(float(m_hold_delay.strip()))
                     pyautogui.mouseUp(button='left' if 'Left-hold' in item_splited[0] else 'right')
 
                 elif item_splited[0] == 'delay':
@@ -239,10 +242,6 @@ class AutoClicker():
                             icon = QIcon(self.resource_path('icons/key.png'))
                         elif 'delay' in key:
                             icon = QIcon(self.resource_path('icons/delay.png'))
-                        elif 'Mouse hold at' in key:
-                            icon = QIcon(self.resource_path('icons/mouse_hold.png'))
-                        elif 'Mouse release at' in key:
-                            icon = QIcon(self.resource_path('icons/mouse_release.png'))
                         item = QListWidgetItem(icon, key)
                         # self.list_widget.addItem(key.strip())
                         self.list_widget.addItem(item)

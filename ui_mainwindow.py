@@ -247,6 +247,23 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addItem(self.verticalSpacer)
 
+        self.verticalFrame = QFrame(self.verticalFrame_2)
+        self.verticalFrame.setObjectName(u"verticalFrame")
+        self.verticalLayout_3 = QVBoxLayout(self.verticalFrame)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_3.setContentsMargins(-1, 5, -1, 5)
+        self.status_running_or_idle_label = QLabel(self.verticalFrame)
+        self.status_running_or_idle_label.setObjectName(u"status_running_or_idle_label")
+        font = QFont()
+        font.setPointSize(18)
+        self.status_running_or_idle_label.setFont(font)
+        self.status_running_or_idle_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.verticalLayout_3.addWidget(self.status_running_or_idle_label)
+
+
+        self.verticalLayout_4.addWidget(self.verticalFrame)
+
         self.start_stop_bt = QPushButton(self.verticalFrame_2)
         self.start_stop_bt.setObjectName(u"start_stop_bt")
         self.start_stop_bt.setMinimumSize(QSize(0, 30))
@@ -340,6 +357,7 @@ class Ui_MainWindow(object):
         self.add_right_hold_bt.setText(QCoreApplication.translate("MainWindow", u"Right Hold", None))
         self.add_right_hold_lineEdit.setText(QCoreApplication.translate("MainWindow", u"1.0", None))
         self.add_right_hold_lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"1.0", None))
+        self.status_running_or_idle_label.setText(QCoreApplication.translate("MainWindow", u"Status: Idle", None))
         self.start_stop_bt.setText(QCoreApplication.translate("MainWindow", u"Start/Stop", None))
         self.remove_key_bt.setText("")
         self.move_up_bt.setText("")

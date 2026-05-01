@@ -1,10 +1,2 @@
-Key press: 1
-Key press: a
-Key press: a
-Key press: z
-Key press: x
-Key press: c
-Key press: v
-Key press: b
-Key press: a
-Key press: s
+Left-hold: 5.0
+delay: 5.0

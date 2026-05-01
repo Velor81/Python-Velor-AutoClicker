@@ -26,7 +26,7 @@ class MainWidget(QMainWindow):
         self.add_bt_icons()
         self.auto_clicker = AutoClicker(self.ui.keys_listWidget, self.ui.add_key_edit, self.ui.add_delay_item_edit,
                                         self.ui.toggle_start_stop_edit,self.ui.delay_edit, self.ui.add_left_hold_lineEdit,
-                                        self.ui.add_right_hold_lineEdit, self) #self here only for QMessage
+                                        self.ui.add_right_hold_lineEdit, self.ui.status_running_or_idle_label ,self) #self here only for QMessage
 
         self.add_context_menu(self.ui.keys_listWidget, ['copy', 'clear', 'remove'])
 
