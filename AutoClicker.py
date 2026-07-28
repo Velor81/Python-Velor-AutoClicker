@@ -5,7 +5,6 @@ import os
 import threading
 import pyautogui
 from pynput import keyboard
-import json
 from ui.ui_mainwindow import Ui_MainWindow
 
 class AutoClicker():
@@ -13,11 +12,11 @@ class AutoClicker():
         self.ui = ui
         self.parent = parent # for Qmessage
         pyautogui.PAUSE = 0.0 #delay between key presses (default is 0.1, 0=no delay)
-        self.click_delay = 0.5
-        self.hold_start_time = None  
+        self.global_click_delay = 0.5
         self.default_stop_start_toggle_key = 'f8'
         self.toggle_start_stop_key = self.get_key_from_text(self.default_stop_start_toggle_key)  # Handle printable and non-printable keys
         self.autoclicker_is_running = False #to break thread
+
         self.valid_keys = [
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 
             't', 'u','v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
@@ -77,11 +76,11 @@ class AutoClicker():
 
     def add_mouse_left_right_hold_item(self, is_it_left_click:bool):
         if is_it_left_click:
-            delay = self.ui.add_left_hold_lineEdit.text()
-            action = f"Left-hold: {delay}"
+            delay = self.ui.add_left_hold_duration_le.text()
+            action = f"Left-hold : : {delay}"
         else:
-            delay = self.ui.add_left_hold_lineEdit.text()
-            action = f"Right-hold: {delay}"
+            delay = self.ui.add_right_hold_duration_le.text()
+            action = f"Right-hold: : {delay}"
         icon = QIcon("icons/mouse.png")
         self.add_list_item(icon, action)
         self.ui.add_key_edit.clear()
@@ -90,7 +89,7 @@ class AutoClicker():
     def add_delay_item(self):
         delay_amount = self.ui.add_delay_item_edit.text().strip().lower()
         if delay_amount:
-            action = f"delay: {delay_amount}"
+            action = f"Delay : : {delay_amount}"
             icon = QIcon("icons/delay.png")
             self.add_list_item(icon, action)
             self.ui.add_key_edit.clear() 
@@ -99,12 +98,22 @@ class AutoClicker():
     def add_key(self):
         key = self.ui.add_key_edit.text().strip().lower()
         if key in self.valid_keys:
-            action = f"Key press: {key}"
+            action = f"Key Press : {key}"
             icon = QIcon("icons/key.png")
             self.add_list_item(icon, action)
             self.ui.add_key_edit.clear() 
             self.save_keys_to_file() 
-            
+
+    def add_key_hold(self):
+        key = self.ui.add_key_hold_le.text().strip().lower()
+        duration = self.ui.add_key_hold_duration_le.text().strip()
+        if key in self.valid_keys:
+            action = f"Key Hold : {key} : {duration}"
+            icon = QIcon("icons/key.png")
+            self.add_list_item(icon, action)
+            self.ui.add_key_hold_le.clear() 
+            self.save_keys_to_file() 
+
     def clear_keys(self):
         self.ui.keys_listWidget.clear()
         self.save_keys_to_file()
@@ -140,9 +149,9 @@ class AutoClicker():
 
     def save_click_delay(self):
         try:
-            self.click_delay = float(self.ui.delay_edit.text().strip())
+            self.global_click_delay = float(self.ui.global_delay_edit.text().strip())
             # self.ui.delay_edit.clear() 
-            print(f"Click delay set to: {self.click_delay} seconds")
+            print(f"Click delay set to: {self.global_click_delay} seconds")
         except ValueError:
             QMessageBox.information(self.parent, "err", "Invalid delay value entered")
             print("Invalid delay value entered")
@@ -187,6 +196,36 @@ class AutoClicker():
                     """
         )
         QMessageBox.information(self.parent, "Keys Help", help_text)
+    def add_key_hold_help(self):
+        help_text = ("""
+<b>Key Hold Notice</b><br>
+Avoid manually pressing the same key that is currently being held by the macro,
+especially when using long hold durations.<br><br>
+
+If this happens, <b>stop and start the macro again</b> before continuing.<br><br>
+
+<b>Supported Keys</b><br><br>
+
+<b>Letters</b><br>
+A B C D E F G H I J K L M<br>
+N O P Q R S T U V W X Y Z<br><br>
+
+<b>Numbers</b><br>
+0 1 2 3 4 5 6 7 8 9<br><br>
+
+<b>Modifiers</b><br>
+Shift, Ctrl, Alt, AltGr, Cmd<br><br>
+
+<b>Special Keys</b><br>
+Space, Enter, Tab, Esc, Backspace, Delete<br>
+Home, End, PageUp, PageDown<br>
+Left, Right, Up, Down<br><br>
+
+<b>Function Keys</b><br>
+F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12
+"""
+        )
+        QMessageBox.information(self.parent, "Keys Help", help_text)
 
     def toggle_autoclicker(self):
         if self.autoclicker_is_running:
@@ -205,31 +244,48 @@ class AutoClicker():
                 if not self.autoclicker_is_running:
                     break
                 item = self.ui.keys_listWidget.item(i).text()
-                item_splited = item.split(':')                
-                if item_splited[0] == 'Key press':
-                    pyautogui.press(item_splited[1].strip())
-                elif item_splited[0] == 'Left-click' or item_splited[0] == 'Right-click':
-                    pyautogui.click(button='left' if item_splited[0] == 'Left-click' else 'right')
-                elif item_splited[0] == 'Left-hold' or item_splited[0] == 'Right-hold':
-                    if item_splited[0] == 'Left-hold':
-                        m_hold_delay = self.ui.add_left_hold_lineEdit.text()
-                    else:
-                        m_hold_delay = self.ui.add_right_hold_lineEdit.text()
-                    pyautogui.mouseDown(button='left' if 'Left-hold' in item_splited[0] else 'right')
-                    time.sleep(float(m_hold_delay.strip()))
-                    pyautogui.mouseUp(button='left' if 'Left-hold' in item_splited[0] else 'right')
+                item_splited = item.split(':')
+                action_type = item_splited[0].strip()
+                key = item_splited[1].strip() if len(item_splited) > 1 else None
+                duration = float(item_splited[2].strip()) if len(item_splited) > 2 else None
 
-                elif item_splited[0] == 'delay':
-                    delay_time = float(item_splited[1])
-                    time.sleep(delay_time) 
+                if action_type == 'Key Press':
+                    pyautogui.press(key)
 
-                time.sleep(self.click_delay)
+                elif action_type == 'Key Hold':
+                    pyautogui.keyDown(key)
+                    self.interruptible_sleep(duration)
+                    pyautogui.keyUp(key)
+
+                elif action_type in ('Left-click', 'Right-click'):
+                    pyautogui.click(button='left' if action_type == 'Left-click' else 'right')
+
+                elif action_type in ('Left-hold', 'Right-hold'):
+                    pyautogui.mouseDown(button='left' if 'Left-hold' in action_type else 'right')
+                    self.interruptible_sleep(duration)
+                    pyautogui.mouseUp(button='left' if 'Left-hold' in action_type else 'right')
+
+                elif action_type == 'Delay':
+                    self.interruptible_sleep(duration) 
+                self.interruptible_sleep(self.global_click_delay)
+
+    def interruptible_sleep(self, duration:float): #to avoid threading issue
+        if self.autoclicker_is_running:
+            if duration >= 1.0:
+                start = time.monotonic()
+                while time.monotonic() - start < duration:
+                    if not self.autoclicker_is_running:
+                        return False
+                    time.sleep(0.01)
+            else:
+                time.sleep(duration)
 
     def save_keys_to_file(self):
         keys = [self.ui.keys_listWidget.item(i).text() for i in range(self.ui.keys_listWidget.count())]
         with open("keys.txt", "w") as f:
             for key in keys:
                 f.write(f"{key}\n")
+
     def load_keys_from_file(self):
         if os.path.exists("keys.txt"):
             with open("keys.txt", "r") as f:
@@ -237,11 +293,11 @@ class AutoClicker():
                 for key in keys:
                     key = key.strip()
                     if key:
-                        if 'Left-click' in key or "Right-click" in key or 'Left-hold' in key or 'Right-hold':
+                        if 'Left-click' in key or "Right-click" in key or 'Left-hold' in key or 'Right-hold' in key:
                             icon = QIcon("icons/mouse.png")
-                        elif 'Key press' in key:
+                        elif 'Key Press' in key or 'Key Hold' in key:
                             icon = QIcon('icons/key.png')
-                        elif 'delay' in key:
+                        elif 'Delay' in key:
                             icon = QIcon('icons/delay.png')
                         item = QListWidgetItem(icon, key)
                         # self.ui.keys_listWidget.addItem(key.strip())

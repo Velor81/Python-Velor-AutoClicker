@@ -10,7 +10,7 @@ from PySide6.QtGui import QAction,QDoubleValidator
 from ui.ui_mainwindow import Ui_MainWindow
 from AutoClicker import AutoClicker
 from PySide6.QtGui import QIcon
-import sys, os
+import sys
 class MainWidget(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -21,8 +21,9 @@ class MainWidget(QMainWindow):
         float_validator.setNotation(QDoubleValidator.StandardNotation) 
         self.ui.global_delay_edit.setValidator(float_validator)
         self.ui.add_delay_item_edit.setValidator(float_validator)
-        self.ui.add_left_hold_lineEdit.setValidator(float_validator)
-        self.ui.add_right_hold_lineEdit.setValidator(float_validator)
+        self.ui.add_left_hold_duration_le.setValidator(float_validator)
+        self.ui.add_right_hold_duration_le.setValidator(float_validator)
+        self.ui.add_key_hold_duration_le.setValidator(float_validator)
         self.add_bt_icons()
         self.auto_clicker = AutoClicker( self, self.ui)
 
@@ -46,6 +47,8 @@ class MainWidget(QMainWindow):
         self.ui.keys_listWidget.itemChanged.connect(lambda: self.auto_clicker.save_keys_to_file())
         self.ui.add_key_help_bt.clicked.connect(lambda:self.auto_clicker.add_key_help())
         self.ui.clear_key_bt.clicked.connect(lambda: self.auto_clicker.clear_keys())
+        self.ui.add_key_hold_bt.clicked.connect(lambda: self.auto_clicker.add_key_hold())
+        self.ui.add_key_hold_help.clicked.connect(lambda:self.auto_clicker.add_key_hold_help())
 
     def add_bt_icons(self):
         icon = QIcon("icons/arrow-up-icon Blue.png")
