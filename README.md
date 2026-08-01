@@ -22,4 +22,6 @@ Watch the application in action:
 
 ## License
 
-MIT License
+This project is licensed under the MIT License.
+
+The icons included in this project are original artwork created by Velor81 for this project and are distributed under the MIT License.
