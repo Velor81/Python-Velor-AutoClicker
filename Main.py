@@ -17,6 +17,7 @@ class MainWidget(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.setWindowTitle("Velor Auto Clicker")
+        self.setWindowIcon(QIcon("icons/V app icon.ico"))
         float_validator = QDoubleValidator()
         float_validator.setNotation(QDoubleValidator.StandardNotation) 
         self.ui.global_delay_edit.setValidator(float_validator)

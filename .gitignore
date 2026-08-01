@@ -6,3 +6,4 @@ output
 *.pyc
 .env
 keys.txt
+tempCodeRunnerFile.py
