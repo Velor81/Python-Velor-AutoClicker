@@ -8,9 +8,10 @@ from PySide6.QtWidgets import QMainWindow, QApplication, QMenu, QListWidget
 from PySide6.QtCore import  Qt, QPoint
 from PySide6.QtGui import QAction,QDoubleValidator
 from ui.ui_mainwindow import Ui_MainWindow
-from AutoClicker import AutoClicker
+from modules.AutoClicker import AutoClicker
 from PySide6.QtGui import QIcon
 import sys
+
 class MainWidget(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -83,8 +84,8 @@ class MainWidget(QMainWindow):
 
 
 if __name__ == "__main__":
-    import sys
     app = QApplication(sys.argv)
+
     window = MainWidget()
     window.resize(550,  500)
     window.show()
