@@ -1,5 +1,6 @@
 from PySide6.QtWidgets import QMessageBox, QListWidgetItem
 from PySide6.QtGui import QIcon
+from PySide6.QtCore import Qt
 import time
 import os
 import threading
@@ -158,20 +159,26 @@ class AutoClicker():
 
     def show_help(self):
         help_text = (
-        "Developer: Alaa Hamdy (Velor)\n"
-        "Github: https://github.com/Velor81\n"
-        "Licensed under the MIT License\n\n"
-        "------------------------------\n"
-            "Instructions:\n"
-            "1. Enter a key in the input box and click 'Add Key' to add it to the list.\n"
-            "2. Use 'Remove Key' to delete the selected key from the list.\n"
-            "3. Use 'Move Up' and 'Move Down' to rearrange the keys in the list.\n"
-            "4. Set a toggle key to start/stop the auto clicker from the keyboard.\n"
-            "5. Adjust the delay between clicks using the 'Click Delay' input.\n"
-        "-------------------------------\n\n"
-        "Warning: Setting delay to 0 may cause system lag or freeze. Use with caution."
+            "<b>Developer:</b> Alaa Hamdy (Velor)<br>"
+            "<b>Github:</b> <a href='https://github.com/Velor81'>https://github.com/Velor81</a><br>"
+            "Licensed under the MIT License<br><br>"
+            "------------------------------<br>"
+            "<b>Instructions:</b><br>"
+            "1. Enter a key in the input box and click 'Add Key' to add it to the list.<br>"
+            "2. Use 'Remove Key' to delete the selected key from the list.<br>"
+            "3. Use 'Move Up' and 'Move Down' to rearrange the keys in the list.<br>"
+            "4. Set a toggle key to start/stop the auto clicker from the keyboard.<br>"
+            "5. Adjust the delay between clicks using the 'Click Delay' input.<br>"
+            "-------------------------------<br><br>"
+            "<font color='red'><b>Warning:</b> Setting delay to 0 may cause system lag or freeze. Use with caution.</font>"
         )
-        QMessageBox.information(self.parent, "Help", help_text)
+        msg = QMessageBox(self.parent)
+        msg.setIcon(QMessageBox.Icon.Information)
+        msg.setWindowTitle("Help")
+        msg.setText(help_text)
+        msg.setTextFormat(Qt.TextFormat.RichText) #to make urls clickable
+        msg.exec()
+
     def add_key_help(self):
         help_text = ("""
                     <b>Supported Keys</b><br><br>
