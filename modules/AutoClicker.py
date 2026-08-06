@@ -160,7 +160,7 @@ class AutoClicker():
     def show_help(self):
         help_text = (
             "<b>Developer:</b> Alaa Hamdy (Velor)<br>"
-            "<b>Github:</b> <a href='https://github.com/Velor81'>https://github.com/Velor81</a><br>"
+            "<b>My Github:</b> <a href='https://github.com/Velor81'>https://github.com/Velor81</a><br>"
             "Licensed under the MIT License<br><br>"
             "------------------------------<br>"
             "<b>Instructions:</b><br>"
