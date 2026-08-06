@@ -157,7 +157,7 @@ class AutoClicker():
             QMessageBox.information(self.parent, "err", "Invalid delay value entered")
             print("Invalid delay value entered")
 
-    def show_help(self):
+    def show_about(self):
         help_text = (
             "<b>Developer:</b> Alaa Hamdy (Velor)<br>"
             "<b>My Github:</b> <a href='https://github.com/Velor81'>https://github.com/Velor81</a><br>"
@@ -168,7 +168,7 @@ class AutoClicker():
             "2. Use 'Remove Key' to delete the selected key from the list.<br>"
             "3. Use 'Move Up' and 'Move Down' to rearrange the keys in the list.<br>"
             "4. Set a toggle key to start/stop the auto clicker from the keyboard.<br>"
-            "5. Adjust the delay between clicks using the 'Click Delay' input.<br>"
+            "5. Adjust the delay between clicks. The value is in seconds (0.001 = 1 ms).<br>"
             "-------------------------------<br><br>"
             "<font color='red'><b>Warning:</b> Setting delay to 0 may cause system lag or freeze. Use with caution.</font>"
         )

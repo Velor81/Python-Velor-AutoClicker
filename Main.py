@@ -45,7 +45,7 @@ class MainWidget(QMainWindow):
         self.ui.move_down_bt.clicked.connect(lambda: self.auto_clicker.move_key_down())
         self.ui.remove_key_bt.clicked.connect(lambda: self.auto_clicker.remove_key())
         self.ui.global_delay_edit.textChanged.connect(lambda: self.auto_clicker.save_click_delay())
-        self.ui.help_bt.clicked.connect(lambda: self.auto_clicker.show_help())
+        self.ui.about_bt.clicked.connect(lambda: self.auto_clicker.show_about())
         self.ui.keys_listWidget.itemChanged.connect(lambda: self.auto_clicker.save_keys_to_file())
         self.ui.add_key_help_bt.clicked.connect(lambda:self.auto_clicker.add_key_help())
         self.ui.clear_key_bt.clicked.connect(lambda: self.auto_clicker.clear_keys())

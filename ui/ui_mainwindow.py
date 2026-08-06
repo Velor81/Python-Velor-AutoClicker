@@ -8,19 +8,23 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication,
-    QMetaObject, 
-    QSize, Qt)
-from PySide6.QtGui import QFont
-from PySide6.QtWidgets import ( QFrame, QGridLayout, QGroupBox,
-    QHBoxLayout, QLabel, QLineEdit, QListWidget, QPushButton, QSizePolicy,
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QGroupBox,
+    QHBoxLayout, QLabel, QLineEdit, QListWidget,
+    QListWidgetItem, QMainWindow, QPushButton, QSizePolicy,
     QSpacerItem, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(788, 720)
+        MainWindow.resize(793, 720)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_2 = QVBoxLayout(self.centralwidget)
@@ -38,10 +42,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setSpacing(0)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.help_bt = QPushButton(self.horizontalFrame)
-        self.help_bt.setObjectName(u"help_bt")
+        self.about_bt = QPushButton(self.horizontalFrame)
+        self.about_bt.setObjectName(u"about_bt")
 
-        self.horizontalLayout_5.addWidget(self.help_bt, 0, Qt.AlignmentFlag.AlignLeft)
+        self.horizontalLayout_5.addWidget(self.about_bt, 0, Qt.AlignmentFlag.AlignLeft)
 
 
         self.verticalLayout_2.addWidget(self.horizontalFrame)
@@ -73,6 +77,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setContentsMargins(2, 2, 2, 2)
         self.horizontalFrame1 = QFrame(self.toggle_keys_group)
         self.horizontalFrame1.setObjectName(u"horizontalFrame1")
+        self.horizontalFrame1.setFrameShape(QFrame.Shape.NoFrame)
         self.horizontalLayout_8 = QHBoxLayout(self.horizontalFrame1)
         self.horizontalLayout_8.setSpacing(4)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
@@ -87,19 +92,20 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8.addWidget(self.toggle_start_stop_edit)
 
-
-        self.verticalLayout_5.addWidget(self.horizontalFrame1)
-
-        self.save_toggle_keys_bt = QPushButton(self.toggle_keys_group)
+        self.save_toggle_keys_bt = QPushButton(self.horizontalFrame1)
         self.save_toggle_keys_bt.setObjectName(u"save_toggle_keys_bt")
 
-        self.verticalLayout_5.addWidget(self.save_toggle_keys_bt)
+        self.horizontalLayout_8.addWidget(self.save_toggle_keys_bt)
+
+
+        self.verticalLayout_5.addWidget(self.horizontalFrame1)
 
 
         self.verticalLayout_4.addWidget(self.toggle_keys_group)
 
         self.delay_group = QGroupBox(self.verticalFrame_2)
         self.delay_group.setObjectName(u"delay_group")
+        self.delay_group.setFlat(False)
         self.horizontalLayout_3 = QHBoxLayout(self.delay_group)
         self.horizontalLayout_3.setSpacing(4)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
@@ -120,15 +126,6 @@ class Ui_MainWindow(object):
         self.add_key_group.setSpacing(4)
         self.add_key_group.setObjectName(u"add_key_group")
         self.add_key_group.setContentsMargins(0, 0, 0, 0)
-        self.verticalFrame_4 = QFrame(self.verticalGroupBox_3)
-        self.verticalFrame_4.setObjectName(u"verticalFrame_4")
-        self.verticalLayout_6 = QVBoxLayout(self.verticalFrame_4)
-        self.verticalLayout_6.setSpacing(0)
-        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
-
-        self.add_key_group.addWidget(self.verticalFrame_4)
-
         self.horizontalGroupBox = QGroupBox(self.verticalGroupBox_3)
         self.horizontalGroupBox.setObjectName(u"horizontalGroupBox")
         self.horizontalLayout_9 = QHBoxLayout(self.horizontalGroupBox)
@@ -210,20 +207,6 @@ class Ui_MainWindow(object):
 
         self.add_key_group.addWidget(self.gridGroupBox)
 
-        self.verticalFrame_5 = QFrame(self.verticalGroupBox_3)
-        self.verticalFrame_5.setObjectName(u"verticalFrame_5")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.verticalFrame_5.sizePolicy().hasHeightForWidth())
-        self.verticalFrame_5.setSizePolicy(sizePolicy2)
-        self.horizontalLayout_2 = QHBoxLayout(self.verticalFrame_5)
-        self.horizontalLayout_2.setSpacing(4)
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
-
-        self.add_key_group.addWidget(self.verticalFrame_5, 0, Qt.AlignmentFlag.AlignTop)
-
         self.line_2 = QFrame(self.verticalGroupBox_3)
         self.line_2.setObjectName(u"line_2")
         self.line_2.setFrameShape(QFrame.Shape.HLine)
@@ -236,15 +219,15 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7 = QHBoxLayout(self.horizontalGroupBox1)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.horizontalLayout_7.setContentsMargins(2, 2, 2, 2)
-        self.add_mouse_right_click_bt = QPushButton(self.horizontalGroupBox1)
-        self.add_mouse_right_click_bt.setObjectName(u"add_mouse_right_click_bt")
-
-        self.horizontalLayout_7.addWidget(self.add_mouse_right_click_bt)
-
         self.add_mouse_left_click_bt = QPushButton(self.horizontalGroupBox1)
         self.add_mouse_left_click_bt.setObjectName(u"add_mouse_left_click_bt")
 
         self.horizontalLayout_7.addWidget(self.add_mouse_left_click_bt)
+
+        self.add_mouse_right_click_bt = QPushButton(self.horizontalGroupBox1)
+        self.add_mouse_right_click_bt.setObjectName(u"add_mouse_right_click_bt")
+
+        self.horizontalLayout_7.addWidget(self.add_mouse_right_click_bt)
 
 
         self.add_key_group.addWidget(self.horizontalGroupBox1)
@@ -255,25 +238,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_10.setSpacing(4)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.verticalLayout_10.setContentsMargins(2, 2, 2, 2)
-        self.horizontalFrame_2 = QFrame(self.verticalGroupBox1)
-        self.horizontalFrame_2.setObjectName(u"horizontalFrame_2")
-        self.horizontalLayout_6 = QHBoxLayout(self.horizontalFrame_2)
-        self.horizontalLayout_6.setSpacing(0)
-        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.horizontalLayout_6.setContentsMargins(1, 1, 1, 1)
-        self.add_right_hold_bt = QPushButton(self.horizontalFrame_2)
-        self.add_right_hold_bt.setObjectName(u"add_right_hold_bt")
-
-        self.horizontalLayout_6.addWidget(self.add_right_hold_bt)
-
-        self.add_right_hold_duration_le = QLineEdit(self.horizontalFrame_2)
-        self.add_right_hold_duration_le.setObjectName(u"add_right_hold_duration_le")
-
-        self.horizontalLayout_6.addWidget(self.add_right_hold_duration_le)
-
-
-        self.verticalLayout_10.addWidget(self.horizontalFrame_2)
-
         self.horizontalFrame2 = QFrame(self.verticalGroupBox1)
         self.horizontalFrame2.setObjectName(u"horizontalFrame2")
         self.horizontalLayout_4 = QHBoxLayout(self.horizontalFrame2)
@@ -292,6 +256,25 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_10.addWidget(self.horizontalFrame2)
+
+        self.horizontalFrame_2 = QFrame(self.verticalGroupBox1)
+        self.horizontalFrame_2.setObjectName(u"horizontalFrame_2")
+        self.horizontalLayout_6 = QHBoxLayout(self.horizontalFrame_2)
+        self.horizontalLayout_6.setSpacing(0)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalLayout_6.setContentsMargins(1, 1, 1, 1)
+        self.add_right_hold_bt = QPushButton(self.horizontalFrame_2)
+        self.add_right_hold_bt.setObjectName(u"add_right_hold_bt")
+
+        self.horizontalLayout_6.addWidget(self.add_right_hold_bt)
+
+        self.add_right_hold_duration_le = QLineEdit(self.horizontalFrame_2)
+        self.add_right_hold_duration_le.setObjectName(u"add_right_hold_duration_le")
+
+        self.horizontalLayout_6.addWidget(self.add_right_hold_duration_le)
+
+
+        self.verticalLayout_10.addWidget(self.horizontalFrame_2)
 
 
         self.add_key_group.addWidget(self.verticalGroupBox1)
@@ -336,11 +319,11 @@ class Ui_MainWindow(object):
 
         self.move_up_down_group = QFrame(self.verticalFrame_6)
         self.move_up_down_group.setObjectName(u"move_up_down_group")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.move_up_down_group.sizePolicy().hasHeightForWidth())
-        self.move_up_down_group.setSizePolicy(sizePolicy3)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.move_up_down_group.sizePolicy().hasHeightForWidth())
+        self.move_up_down_group.setSizePolicy(sizePolicy2)
         self.verticalLayout = QVBoxLayout(self.move_up_down_group)
         self.verticalLayout.setSpacing(4)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -353,16 +336,16 @@ class Ui_MainWindow(object):
 
         self.move_up_bt = QPushButton(self.move_up_down_group)
         self.move_up_bt.setObjectName(u"move_up_bt")
-        sizePolicy3.setHeightForWidth(self.move_up_bt.sizePolicy().hasHeightForWidth())
-        self.move_up_bt.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.move_up_bt.sizePolicy().hasHeightForWidth())
+        self.move_up_bt.setSizePolicy(sizePolicy2)
         self.move_up_bt.setMaximumSize(QSize(25, 16777215))
 
         self.verticalLayout.addWidget(self.move_up_bt)
 
         self.move_down_bt = QPushButton(self.move_up_down_group)
         self.move_down_bt.setObjectName(u"move_down_bt")
-        sizePolicy3.setHeightForWidth(self.move_down_bt.sizePolicy().hasHeightForWidth())
-        self.move_down_bt.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.move_down_bt.sizePolicy().hasHeightForWidth())
+        self.move_down_bt.setSizePolicy(sizePolicy2)
         self.move_down_bt.setMaximumSize(QSize(25, 16777215))
 
         self.verticalLayout.addWidget(self.move_down_bt)
@@ -380,6 +363,30 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.verticalFrame_6)
 
         MainWindow.setCentralWidget(self.centralwidget)
+        QWidget.setTabOrder(self.about_bt, self.toggle_start_stop_edit)
+        QWidget.setTabOrder(self.toggle_start_stop_edit, self.save_toggle_keys_bt)
+        QWidget.setTabOrder(self.save_toggle_keys_bt, self.global_delay_edit)
+        QWidget.setTabOrder(self.global_delay_edit, self.add_delay_item_bt)
+        QWidget.setTabOrder(self.add_delay_item_bt, self.add_delay_item_edit)
+        QWidget.setTabOrder(self.add_delay_item_edit, self.add_key_edit)
+        QWidget.setTabOrder(self.add_key_edit, self.add_key_help_bt)
+        QWidget.setTabOrder(self.add_key_help_bt, self.add_key_bt)
+        QWidget.setTabOrder(self.add_key_bt, self.add_key_hold_le)
+        QWidget.setTabOrder(self.add_key_hold_le, self.add_key_hold_duration_le)
+        QWidget.setTabOrder(self.add_key_hold_duration_le, self.add_key_hold_help)
+        QWidget.setTabOrder(self.add_key_hold_help, self.add_key_hold_bt)
+        QWidget.setTabOrder(self.add_key_hold_bt, self.add_mouse_left_click_bt)
+        QWidget.setTabOrder(self.add_mouse_left_click_bt, self.add_mouse_right_click_bt)
+        QWidget.setTabOrder(self.add_mouse_right_click_bt, self.add_left_hold_bt)
+        QWidget.setTabOrder(self.add_left_hold_bt, self.add_left_hold_duration_le)
+        QWidget.setTabOrder(self.add_left_hold_duration_le, self.add_right_hold_bt)
+        QWidget.setTabOrder(self.add_right_hold_bt, self.add_right_hold_duration_le)
+        QWidget.setTabOrder(self.add_right_hold_duration_le, self.start_stop_bt)
+        QWidget.setTabOrder(self.start_stop_bt, self.keys_listWidget)
+        QWidget.setTabOrder(self.keys_listWidget, self.remove_key_bt)
+        QWidget.setTabOrder(self.remove_key_bt, self.move_up_bt)
+        QWidget.setTabOrder(self.move_up_bt, self.move_down_bt)
+        QWidget.setTabOrder(self.move_down_bt, self.clear_key_bt)
 
         self.retranslateUi(MainWindow)
 
@@ -388,12 +395,12 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.help_bt.setText(QCoreApplication.translate("MainWindow", u"Help", None))
+        self.about_bt.setText(QCoreApplication.translate("MainWindow", u"About", None))
         self.toggle_keys_group.setTitle(QCoreApplication.translate("MainWindow", u"Toggle Keys", None))
         self.start_stop_label.setText(QCoreApplication.translate("MainWindow", u"Start/Stop", None))
         self.toggle_start_stop_edit.setText(QCoreApplication.translate("MainWindow", u"f8", None))
         self.toggle_start_stop_edit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"f8", None))
-        self.save_toggle_keys_bt.setText(QCoreApplication.translate("MainWindow", u"Save Toggle Keys", None))
+        self.save_toggle_keys_bt.setText(QCoreApplication.translate("MainWindow", u"Save", None))
         self.delay_group.setTitle(QCoreApplication.translate("MainWindow", u"Global Delay", None))
         self.global_delay_edit.setText(QCoreApplication.translate("MainWindow", u"0.5", None))
         self.global_delay_edit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"0.5", None))
@@ -414,15 +421,15 @@ class Ui_MainWindow(object):
         self.add_key_hold_duration_le.setPlaceholderText(QCoreApplication.translate("MainWindow", u"1.0", None))
         self.add_key_hold_bt.setText(QCoreApplication.translate("MainWindow", u"Add Key Hold", None))
         self.horizontalGroupBox1.setTitle(QCoreApplication.translate("MainWindow", u"Add Mouse Click", None))
-        self.add_mouse_right_click_bt.setText(QCoreApplication.translate("MainWindow", u"Right Click", None))
         self.add_mouse_left_click_bt.setText(QCoreApplication.translate("MainWindow", u"Left Click", None))
+        self.add_mouse_right_click_bt.setText(QCoreApplication.translate("MainWindow", u"Right Click", None))
         self.verticalGroupBox1.setTitle(QCoreApplication.translate("MainWindow", u"Add Mouse Hold", None))
-        self.add_right_hold_bt.setText(QCoreApplication.translate("MainWindow", u"Right Hold", None))
-        self.add_right_hold_duration_le.setText(QCoreApplication.translate("MainWindow", u"1.0", None))
-        self.add_right_hold_duration_le.setPlaceholderText(QCoreApplication.translate("MainWindow", u"1.0", None))
         self.add_left_hold_bt.setText(QCoreApplication.translate("MainWindow", u"Left Hold", None))
         self.add_left_hold_duration_le.setText(QCoreApplication.translate("MainWindow", u"1.0", None))
         self.add_left_hold_duration_le.setPlaceholderText(QCoreApplication.translate("MainWindow", u"0.0", None))
+        self.add_right_hold_bt.setText(QCoreApplication.translate("MainWindow", u"Right Hold", None))
+        self.add_right_hold_duration_le.setText(QCoreApplication.translate("MainWindow", u"1.0", None))
+        self.add_right_hold_duration_le.setPlaceholderText(QCoreApplication.translate("MainWindow", u"1.0", None))
         self.status_running_or_idle_label.setText(QCoreApplication.translate("MainWindow", u"Status: Idle", None))
         self.start_stop_bt.setText(QCoreApplication.translate("MainWindow", u"Start/Stop", None))
         self.remove_key_bt.setText("")
