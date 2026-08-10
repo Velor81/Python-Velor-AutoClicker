@@ -15,11 +15,11 @@ Velor Auto Clicker lets you create simple mouse and keyboard macros with customi
 - 🚫 No Ads
 - 🔓 Open Source (MIT License)
 
-## Screenshot (Version 2.0)
+## Screenshot (Version 3.0)
 
 ![Velor Auto Clicker Screenshot](Screenshot.PNG)
 
-## Demo Video
+## Demo Video (Version 1.0)
 
 Watch the application in action:
 
