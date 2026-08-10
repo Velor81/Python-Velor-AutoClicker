@@ -1,0 +1,124 @@
+QWidget {
+    background: #20242b;
+    color: #e6edf3;
+    font-size: 13px;
+}
+
+QListWidget {
+    background-color: #171b21;
+    font-size: 14px;
+    border: 1px solid #303844;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    margin-top: 20px;
+}
+
+QListWidget::item:selected {
+    background: #2563a8;
+    color: #f4f8fc;
+}
+
+QListWidget::item:selected:!active {
+    color: #f4f8fc;
+    background: #1f568e;
+}
+
+QScrollBar {
+    background: #252a32;
+}
+
+QScrollBar:vertical {
+    background: #252a32;
+    width: 15px;
+    margin: 15px 0 15px 0;
+    border: 1px solid #252a32;
+}
+
+QScrollBar::handle:vertical {
+    background: #3b4552;
+    min-height: 20px;
+    border-radius: 7px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    background: #252a32;
+    height: 15px;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:vertical {
+    subcontrol-position: bottom;
+}
+
+QScrollBar::sub-line:vertical {
+    subcontrol-position: top;
+}
+
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+    border: none;
+    width: 3px;
+    height: 3px;
+    background: #3b4552;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QLineEdit {
+    background: #181c22;
+    padding: 5px;
+    margin: 1px;
+    border: 1px solid #303844;
+    border-radius: 4px;
+    color: #e6edf3;
+}
+
+QLineEdit:focus {
+    border: 1px solid #38a3d1;
+}
+
+QPushButton {
+    background: #353c47;
+    border: 1px solid #46505d;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background: #414b58;
+}
+
+QPushButton:pressed {
+    background: #303640;
+}
+
+#add_mouse_hold_group QPushButton {
+    width: 80px;
+}
+
+QGroupBox {
+    background: #282d35;
+    border: 1px solid #363e49;
+    border-radius: 5px;
+    margin-top: 13px;
+    padding: 7px;
+    border-left: 2px solid #38a3d1;
+}
+
+QGroupBox QFrame {
+    background: #282d35;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 8px;
+    padding: 0 4px;
+    font-weight: bold;
+    color: #e6edf3;
+}
+
+#status_running_or_idle_label {
+    font-size: 20px;
+    font-weight: bold;
+}

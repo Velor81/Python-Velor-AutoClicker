@@ -16,19 +16,19 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <property name="spacing">
-     <number>10</number>
+     <number>0</number>
     </property>
     <property name="leftMargin">
-     <number>15</number>
+     <number>0</number>
     </property>
     <property name="topMargin">
-     <number>15</number>
+     <number>0</number>
     </property>
     <property name="rightMargin">
-     <number>15</number>
+     <number>0</number>
     </property>
     <property name="bottomMargin">
-     <number>15</number>
+     <number>10</number>
     </property>
     <item>
      <widget class="QFrame" name="horizontalFrame">
@@ -67,6 +67,9 @@
     <item>
      <widget class="QFrame" name="verticalFrame_6">
       <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <property name="leftMargin">
         <number>0</number>
        </property>
@@ -80,7 +83,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QFrame" name="verticalFrame_2">
+        <widget class="QFrame" name="main_side_menu_frame">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -95,31 +98,31 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <property name="spacing">
-           <number>10</number>
+           <number>12</number>
           </property>
           <property name="leftMargin">
-           <number>0</number>
+           <number>8</number>
           </property>
           <property name="topMargin">
-           <number>0</number>
+           <number>8</number>
           </property>
           <property name="rightMargin">
-           <number>0</number>
+           <number>8</number>
           </property>
           <property name="bottomMargin">
-           <number>0</number>
+           <number>8</number>
           </property>
           <item>
            <widget class="QGroupBox" name="toggle_keys_group">
             <property name="minimumSize">
              <size>
-              <width>220</width>
+              <width>0</width>
               <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>220</width>
+              <width>2222</width>
               <height>16777215</height>
              </size>
             </property>
@@ -222,195 +225,249 @@
            </widget>
           </item>
           <item>
-           <widget class="QGroupBox" name="verticalGroupBox_3">
-            <property name="minimumSize">
-             <size>
-              <width>220</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>220</width>
-              <height>16777215</height>
-             </size>
-            </property>
+           <widget class="QGroupBox" name="add_delay_group">
             <property name="title">
-             <string/>
+             <string>Add Delay</string>
             </property>
-            <layout class="QVBoxLayout" name="add_key_group">
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
              <property name="spacing">
               <number>4</number>
              </property>
              <property name="leftMargin">
-              <number>0</number>
+              <number>2</number>
              </property>
              <property name="topMargin">
-              <number>0</number>
+              <number>2</number>
              </property>
              <property name="rightMargin">
-              <number>0</number>
+              <number>2</number>
              </property>
              <property name="bottomMargin">
-              <number>0</number>
+              <number>2</number>
              </property>
              <item>
-              <widget class="QGroupBox" name="horizontalGroupBox">
-               <property name="title">
+              <widget class="QPushButton" name="add_delay_item_bt">
+               <property name="text">
                 <string>Add Delay</string>
                </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_9">
-                <property name="spacing">
-                 <number>4</number>
-                </property>
-                <property name="leftMargin">
-                 <number>2</number>
-                </property>
-                <property name="topMargin">
-                 <number>2</number>
-                </property>
-                <property name="rightMargin">
-                 <number>2</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>2</number>
-                </property>
-                <item>
-                 <widget class="QPushButton" name="add_delay_item_bt">
-                  <property name="text">
-                   <string>Add Delay</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="add_delay_item_edit">
-                  <property name="text">
-                   <string>0.5</string>
-                  </property>
-                  <property name="placeholderText">
-                   <string>0.5</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
               </widget>
              </item>
              <item>
-              <widget class="Line" name="line">
-               <property name="orientation">
-                <enum>Qt::Orientation::Horizontal</enum>
+              <widget class="QLineEdit" name="add_delay_item_edit">
+               <property name="text">
+                <string>0.5</string>
+               </property>
+               <property name="placeholderText">
+                <string>0.5</string>
                </property>
               </widget>
              </item>
-             <item>
-              <widget class="QGroupBox" name="verticalGroupBox">
-               <property name="title">
-                <string>Add Key Click</string>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="add_key_click_group">
+            <property name="title">
+             <string>Add Key Click</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout">
+             <property name="leftMargin">
+              <number>2</number>
+             </property>
+             <property name="topMargin">
+              <number>2</number>
+             </property>
+             <property name="rightMargin">
+              <number>2</number>
+             </property>
+             <property name="bottomMargin">
+              <number>2</number>
+             </property>
+             <item row="1" column="0" colspan="2">
+              <widget class="QPushButton" name="add_key_bt">
+               <property name="text">
+                <string>Add Key</string>
                </property>
-               <layout class="QGridLayout" name="gridLayout">
-                <property name="leftMargin">
-                 <number>2</number>
-                </property>
-                <property name="topMargin">
-                 <number>2</number>
-                </property>
-                <property name="rightMargin">
-                 <number>2</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>2</number>
-                </property>
-                <item row="1" column="0" colspan="2">
-                 <widget class="QPushButton" name="add_key_bt">
-                  <property name="text">
-                   <string>Add Key</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0">
-                 <widget class="QLineEdit" name="add_key_edit">
-                  <property name="placeholderText">
-                   <string>Enter key</string>
-                  </property>
-                  <property name="clearButtonEnabled">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QPushButton" name="add_key_help_bt">
-                  <property name="maximumSize">
-                   <size>
-                    <width>25</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>?</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
               </widget>
              </item>
-             <item>
-              <widget class="QGroupBox" name="gridGroupBox">
-               <property name="title">
+             <item row="0" column="0">
+              <widget class="QLineEdit" name="add_key_edit">
+               <property name="placeholderText">
+                <string>Enter key</string>
+               </property>
+               <property name="clearButtonEnabled">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QPushButton" name="add_key_help_bt">
+               <property name="maximumSize">
+                <size>
+                 <width>25</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>?</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="add_hold_key_group">
+            <property name="title">
+             <string>Add Key Hold</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_2">
+             <property name="leftMargin">
+              <number>2</number>
+             </property>
+             <property name="topMargin">
+              <number>2</number>
+             </property>
+             <property name="rightMargin">
+              <number>2</number>
+             </property>
+             <property name="bottomMargin">
+              <number>2</number>
+             </property>
+             <property name="spacing">
+              <number>4</number>
+             </property>
+             <item row="0" column="2">
+              <widget class="QPushButton" name="add_key_hold_help">
+               <property name="maximumSize">
+                <size>
+                 <width>25</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>?</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLineEdit" name="add_key_hold_le">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="placeholderText">
                 <string>Add Key Hold</string>
                </property>
-               <layout class="QGridLayout" name="gridLayout_2">
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="add_key_hold_duration_le">
+               <property name="text">
+                <string>1.0</string>
+               </property>
+               <property name="placeholderText">
+                <string>1.0</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0" colspan="3">
+              <widget class="QPushButton" name="add_key_hold_bt">
+               <property name="text">
+                <string>Add Key Hold</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="add_mouse_click_group">
+            <property name="title">
+             <string>Add Mouse Click</string>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <property name="leftMargin">
+              <number>2</number>
+             </property>
+             <property name="topMargin">
+              <number>2</number>
+             </property>
+             <property name="rightMargin">
+              <number>2</number>
+             </property>
+             <property name="bottomMargin">
+              <number>2</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="add_mouse_left_click_bt">
+               <property name="text">
+                <string>Left Click</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="add_mouse_right_click_bt">
+               <property name="text">
+                <string>Right Click</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="add_mouse_hold_group">
+            <property name="title">
+             <string>Add Mouse Hold</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_10">
+             <property name="spacing">
+              <number>4</number>
+             </property>
+             <property name="leftMargin">
+              <number>2</number>
+             </property>
+             <property name="topMargin">
+              <number>2</number>
+             </property>
+             <property name="rightMargin">
+              <number>2</number>
+             </property>
+             <property name="bottomMargin">
+              <number>2</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="horizontalFrame">
+               <layout class="QHBoxLayout" name="horizontalLayout_4">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
                 <property name="leftMargin">
-                 <number>2</number>
+                 <number>1</number>
                 </property>
                 <property name="topMargin">
-                 <number>2</number>
+                 <number>1</number>
                 </property>
                 <property name="rightMargin">
-                 <number>2</number>
+                 <number>1</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>2</number>
+                 <number>1</number>
                 </property>
-                <property name="spacing">
-                 <number>4</number>
-                </property>
-                <item row="0" column="2">
-                 <widget class="QPushButton" name="add_key_hold_help">
-                  <property name="maximumSize">
-                   <size>
-                    <width>25</width>
-                    <height>25</height>
-                   </size>
-                  </property>
+                <item>
+                 <widget class="QPushButton" name="add_left_hold_bt">
                   <property name="text">
-                   <string>?</string>
+                   <string>Left Hold</string>
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="0">
-                 <widget class="QLineEdit" name="add_key_hold_le">
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="placeholderText">
-                   <string>Add Key Hold</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QLineEdit" name="add_key_hold_duration_le">
+                <item>
+                 <widget class="QLineEdit" name="add_left_hold_duration_le">
                   <property name="text">
                    <string>1.0</string>
                   </property>
                   <property name="placeholderText">
-                   <string>1.0</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0" colspan="3">
-                 <widget class="QPushButton" name="add_key_hold_bt">
-                  <property name="text">
-                   <string>Add Key Hold</string>
+                   <string>0.0</string>
                   </property>
                  </widget>
                 </item>
@@ -418,142 +475,38 @@
               </widget>
              </item>
              <item>
-              <widget class="Line" name="line_2">
-               <property name="orientation">
-                <enum>Qt::Orientation::Horizontal</enum>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QGroupBox" name="horizontalGroupBox">
-               <property name="title">
-                <string>Add Mouse Click</string>
-               </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_7">
-                <property name="leftMargin">
-                 <number>2</number>
-                </property>
-                <property name="topMargin">
-                 <number>2</number>
-                </property>
-                <property name="rightMargin">
-                 <number>2</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>2</number>
-                </property>
-                <item>
-                 <widget class="QPushButton" name="add_mouse_left_click_bt">
-                  <property name="text">
-                   <string>Left Click</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="add_mouse_right_click_bt">
-                  <property name="text">
-                   <string>Right Click</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
-              <widget class="QGroupBox" name="verticalGroupBox">
-               <property name="title">
-                <string>Add Mouse Hold</string>
-               </property>
-               <layout class="QVBoxLayout" name="verticalLayout_10">
+              <widget class="QFrame" name="horizontalFrame_2">
+               <layout class="QHBoxLayout" name="horizontalLayout_6">
                 <property name="spacing">
-                 <number>4</number>
+                 <number>0</number>
                 </property>
                 <property name="leftMargin">
-                 <number>2</number>
+                 <number>1</number>
                 </property>
                 <property name="topMargin">
-                 <number>2</number>
+                 <number>1</number>
                 </property>
                 <property name="rightMargin">
-                 <number>2</number>
+                 <number>1</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>2</number>
+                 <number>1</number>
                 </property>
                 <item>
-                 <widget class="QFrame" name="horizontalFrame">
-                  <layout class="QHBoxLayout" name="horizontalLayout_4">
-                   <property name="spacing">
-                    <number>0</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>1</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>1</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>1</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>1</number>
-                   </property>
-                   <item>
-                    <widget class="QPushButton" name="add_left_hold_bt">
-                     <property name="text">
-                      <string>Left Hold</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLineEdit" name="add_left_hold_duration_le">
-                     <property name="text">
-                      <string>1.0</string>
-                     </property>
-                     <property name="placeholderText">
-                      <string>0.0</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                 <widget class="QPushButton" name="add_right_hold_bt">
+                  <property name="text">
+                   <string>Right Hold</string>
+                  </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QFrame" name="horizontalFrame_2">
-                  <layout class="QHBoxLayout" name="horizontalLayout_6">
-                   <property name="spacing">
-                    <number>0</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>1</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>1</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>1</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>1</number>
-                   </property>
-                   <item>
-                    <widget class="QPushButton" name="add_right_hold_bt">
-                     <property name="text">
-                      <string>Right Hold</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLineEdit" name="add_right_hold_duration_le">
-                     <property name="text">
-                      <string>1.0</string>
-                     </property>
-                     <property name="placeholderText">
-                      <string>1.0</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                 <widget class="QLineEdit" name="add_right_hold_duration_le">
+                  <property name="text">
+                   <string>1.0</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>1.0</string>
+                  </property>
                  </widget>
                 </item>
                </layout>
@@ -622,7 +575,7 @@
         <widget class="QListWidget" name="keys_listWidget"/>
        </item>
        <item>
-        <widget class="QFrame" name="move_up_down_group">
+        <widget class="QFrame" name="move_up_down_frame">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -634,16 +587,16 @@
            <number>4</number>
           </property>
           <property name="leftMargin">
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="topMargin">
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="rightMargin">
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="bottomMargin">
-           <number>0</number>
+           <number>5</number>
           </property>
           <item>
            <widget class="QPushButton" name="remove_key_bt">

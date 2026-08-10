@@ -160,7 +160,7 @@ class AutoClicker():
     def show_about(self):
         help_text = (
             "<b>Developer:</b> Alaa Hamdy (Velor)<br>"
-            "<b>My Github:</b> <a href='https://github.com/Velor81'>https://github.com/Velor81</a><br>"
+            "<b>My Github: </b>" "<a href='https://github.com/Velor81' style='color:#58a6ff;'>""https://github.com/Velor81" "</a><br>"            
             "Licensed under the MIT License<br><br>"
             "------------------------------<br>"
             "<b>Instructions:</b><br>"
@@ -173,8 +173,7 @@ class AutoClicker():
             "<font color='red'><b>Warning:</b> Setting delay to 0 may cause system lag or freeze. Use with caution.</font>"
         )
         msg = QMessageBox(self.parent)
-        msg.setIcon(QMessageBox.Icon.Information)
-        msg.setWindowTitle("Help")
+        msg.setWindowTitle("About")
         msg.setText(help_text)
         msg.setTextFormat(Qt.TextFormat.RichText) #to make urls clickable
         msg.exec()

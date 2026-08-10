@@ -51,7 +51,7 @@ class MainWidget(QMainWindow):
         self.ui.clear_key_bt.clicked.connect(lambda: self.auto_clicker.clear_keys())
         self.ui.add_key_hold_bt.clicked.connect(lambda: self.auto_clicker.add_key_hold())
         self.ui.add_key_hold_help.clicked.connect(lambda:self.auto_clicker.add_key_hold_help())
-
+        
     def add_bt_icons(self):
         icon = QIcon("icons/arrow-up-icon Blue.png")
         self.ui.move_up_bt.setIcon(icon)
@@ -83,10 +83,16 @@ class MainWidget(QMainWindow):
         listwidget.customContextMenuRequested.connect(show_context_menu)
 
 
+def style(app):
+    app.setStyle('fusion')
+    with open("static/style.qss", "r") as f:
+        _style = f.read()
+        app.setStyleSheet(_style)
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-
     window = MainWidget()
-    window.resize(550,  500)
+    window.resize(600,  720)
     window.show()
+    style(app)
     sys.exit(app.exec())
